@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ColorThing</string>
+    <string-array name="colors">
+        <item>RED</item>
+        <item>BLUE</item>
+        <item>GREEN</item>
+        <item>ORANGE</item>
+        <item>MAGENTA</item>
+        <item>CYAN</item>
+        <item>PINK</item>
+        <item>YELLOW</item>
+        <item>WHITE</item>
+        <item>BLACK</item>
+    </string-array>
+</resources>
