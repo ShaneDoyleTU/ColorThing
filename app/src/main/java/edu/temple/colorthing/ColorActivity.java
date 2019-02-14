@@ -22,8 +22,8 @@ public class ColorActivity extends AppCompatActivity implements AdapterView.OnIt
         setContentView(R.layout.activity_color);
 
         Spinner spinner = findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.colors, android.R.layout.simple_spinner_item);
-
+        //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.colors, android.R.layout.simple_spinner_item);
+        ColorAdaprer adapter = new ColorAdapter(this, R.array.colors);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
@@ -35,16 +35,20 @@ public class ColorActivity extends AppCompatActivity implements AdapterView.OnIt
 
     }
     class ColorAdapter extends BaseAdapter{
-
-
+        Context context;
+        String[] colors;
+        public ColorAdapter(Context context,int arrayid){
+            this.context = context;
+            colors = context.GetStringArray(arrayid)
+        }
         @Override
         public int getCount() {
-            return 0;
+            return colors.length;
         }
 
         @Override
         public Object getItem(int position) {
-            return null;
+            return colors[position];
         }
 
         @Override
@@ -54,13 +58,25 @@ public class ColorActivity extends AppCompatActivity implements AdapterView.OnIt
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            return null;
+            TextView tv = new TextView(context);
+            tv.setText(colors[position]);
+            tv.setBackgroundColor(Color.WHITE);
+            return tv;
         }
         @Override
         public View getDropDownView(int position, View convertView, ViewGroup parent){
-            TextView tv = (TextView) convertView;
-            String color = parent.getItemAtPosition(position).toString();
-            tv.setBackgroundColor(Color.parseColor(color));
+            //put if else for convertView
+            TextView tv;
+            if(convertView!=null){
+                tv = (TextView) convertView;
+            }
+            else{
+                tv = new TextView(context);
+            }
+            tv.setText(colors[position]);
+            tv.setBackGroundColor(Color.parseColor(colors[position]);
+            //String color = parent.getItemAtPosition(position).toString();
+            //tv.setBackgroundColor(Color.parseColor(color));
             return tv;
         }
     }
