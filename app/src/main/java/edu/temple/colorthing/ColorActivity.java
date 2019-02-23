@@ -15,9 +15,11 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.content.Context;
+import android.content.Intent;
 
 public class ColorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     //String[] colorlist;
+    boolean firsttime = true;
 
     class ColorAdapter extends BaseAdapter{
         Context context;
@@ -121,13 +123,22 @@ public class ColorActivity extends AppCompatActivity implements AdapterView.OnIt
 
         //((TextView) parent.getChildAt(0)).setBackgroundColor(Color.);
         //view.setBackgroundColor(Color.parseColor(parent.getItemAtPosition(position).toString()));
-        String color = parent.getItemAtPosition(position).toString();
-        View back = findViewById(R.id.background);
-        if(color.equals("DKGRAY")){
-            back.setBackgroundColor(-12303292);
+        if(firsttime){
+            firsttime = false;
         }
         else {
-            back.setBackgroundColor(Color.parseColor(color));
+            String color = parent.getItemAtPosition(position).toString();
+            /*View back = findViewById(R.id.background);
+            if (color.equals("DKGRAY")) {
+                back.setBackgroundColor(-12303292);
+            } else {
+                back.setBackgroundColor(Color.parseColor(color));
+            }*/
+            Intent intent = new Intent(this, CanvasActivity.class);
+            Bundle b = new Bundle();
+            b.putString("color",color);
+            intent.putExtras(b);
+            startActivity(intent);
         }
         //parent.setBackgroundColor(Color.WHITE);
 
