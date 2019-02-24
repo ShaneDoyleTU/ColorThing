@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string name="app_name">ColorThing</string>
+    <string-array name="colors">
+        <item>ROJO</item>
+        <item>AZUL</item>
+        <item>VERDE</item>
+        <item>GRISOSCURO</item>
+        <item>MAGENTA</item>
+        <item>CIAN</item>
+        <item>GRIS</item>
+        <item>AMARILLO</item>
+        <item>BLANCO</item>
+        <item>NEGRO</item>
+    </string-array></resources>

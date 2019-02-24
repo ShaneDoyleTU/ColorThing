@@ -73,6 +73,33 @@ public class ColorActivity extends AppCompatActivity implements AdapterView.OnIt
             if(colors[position].equals("DKGRAY")){
                 tv.setBackgroundColor(-12303292);
             }
+            else if(colors[position].equals("ROJO")){
+                tv.setBackgroundColor(Color.parseColor("RED"));
+            }
+            else if(colors[position].equals("AZUL")){
+                tv.setBackgroundColor(Color.parseColor("BLUE"));
+            }
+            else if(colors[position].equals("VERDE")){
+                tv.setBackgroundColor(Color.parseColor("GREEN"));
+            }
+            else if(colors[position].equals("GRISOSCURO")){
+                tv.setBackgroundColor(-12303292);
+            }
+            else if(colors[position].equals("CIAN")){
+                tv.setBackgroundColor(Color.parseColor("CYAN"));
+            }
+            else if(colors[position].equals("GRIS")){
+                tv.setBackgroundColor(Color.parseColor("GRAY"));
+            }
+            else if(colors[position].equals("AMARILLO")){
+                tv.setBackgroundColor(Color.parseColor("YELLOW"));
+            }
+            else if(colors[position].equals("BLANCO")){
+                tv.setBackgroundColor(Color.parseColor("WHITE"));
+            }
+            else if(colors[position].equals("NEGRO")){
+                tv.setBackgroundColor(Color.parseColor("BLACK"));
+            }
             else {
                 tv.setBackgroundColor(Color.parseColor(colors[position]));
             }
