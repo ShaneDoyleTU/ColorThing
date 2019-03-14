@@ -2,6 +2,7 @@ package edu.temple.colorthing;
 
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,8 +18,12 @@ import android.widget.TextView;
 import android.content.Context;
 import android.content.Intent;
 
-public class ColorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+
+public class ColorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, PaletteFragment.PaletteFragmentListener {
     //String[] colorlist;
+    private PaletteFragment fragmentA;
+    private CanvasFragment fragmentB;
     boolean firsttime = true;
 
     class ColorAdapter extends BaseAdapter{
@@ -126,13 +131,21 @@ public class ColorActivity extends AppCompatActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
 
-        Spinner spinner = findViewById(R.id.spinner);
+        fragmentA = new PaletteFragment();
+        fragmentB = new CanvasFragment();
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment2, fragmentA)
+                .replace(R.id.fragment, fragmentB)
+                .commit();
+
+        //Spinner spinner = findViewById(R.id.spinner);
         //ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.colors, android.R.layout.simple_spinner_item);
-        ColorAdapter adapter = new ColorAdapter(this, R.array.colors);
+        //ColorAdapter adapter = new ColorAdapter(this, R.array.colors);
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //adapter.initView()
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        //spinner.setAdapter(adapter);
+        //spinner.setOnItemSelectedListener(this);
 
         //colorlist = getResources().getStringArray(R.array.colors);
 
@@ -176,5 +189,8 @@ public class ColorActivity extends AppCompatActivity implements AdapterView.OnIt
         //View back = findViewById(R.id.background);
         //back.setBackgroundColor(Color.CYAN);
 
+    }
+    public void colorSend(String color){
+        fragmentB.colorChange(color);
     }
 }
