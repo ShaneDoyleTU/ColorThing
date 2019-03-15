@@ -101,7 +101,7 @@ public class CanvasFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_canvas, container, false);
         this.v = v;
-        return inflater.inflate(R.layout.fragment_canvas, container, false);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

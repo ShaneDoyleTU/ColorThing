@@ -17,7 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.content.Context;
 import android.content.Intent;
-
+import android.widget.Toast;
 
 
 public class ColorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, PaletteFragment.PaletteFragmentListener {
@@ -191,6 +191,7 @@ public class ColorActivity extends AppCompatActivity implements AdapterView.OnIt
 
     }
     public void colorSend(String color){
+
         fragmentB.colorChange(color);
     }
 }

@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".PaletteFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
     <Spinner
         android:id="@+id/spinner3"
         android:layout_width="match_parent"
-        android:layout_height="47dp" />
+        android:layout_height="55dp"
+        android:visibility="visible" />
 </FrameLayout>

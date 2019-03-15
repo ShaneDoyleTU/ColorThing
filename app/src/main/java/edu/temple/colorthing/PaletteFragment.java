@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -27,7 +28,7 @@ public class PaletteFragment extends Fragment implements AdapterView.OnItemSelec
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
-
+    boolean firsttime=true;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -83,7 +84,7 @@ public class PaletteFragment extends Fragment implements AdapterView.OnItemSelec
         ColorAdapter adapter = new ColorAdapter(getActivity(), R.array.colors);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
-        return inflater.inflate(R.layout.fragment_palette, container, false);
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -112,8 +113,13 @@ public class PaletteFragment extends Fragment implements AdapterView.OnItemSelec
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String color = parent.getItemAtPosition(position).toString();
-        listener.colorSend(color);
+        if(firsttime){
+            firsttime = false;
+        }
+        else {
+            String color = parent.getItemAtPosition(position).toString();
+            listener.colorSend(color);
+        }
             /*View back = findViewById(R.id.background);
             if (color.equals("DKGRAY")) {
                 back.setBackgroundColor(-12303292);
@@ -152,6 +158,7 @@ public class PaletteFragment extends Fragment implements AdapterView.OnItemSelec
         String[] colors;
         public ColorAdapter(Context context, int arrayid){
             //this.PaletterFragment = context;
+            this.context = context;
             colors = context.getResources().getStringArray(arrayid);
         }
         @Override
